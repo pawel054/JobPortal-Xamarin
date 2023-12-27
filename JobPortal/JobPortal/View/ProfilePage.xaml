@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobPortal.View.ProfilePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="loginView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <Label x:Name="labelTitle" Text="Zaloguj się" FontSize="40" TextColor="Black" HorizontalOptions="Center"/>
+                <Image Source="login_user.png" WidthRequest="170" Margin="0,50,0,20"/>
+                <Entry x:Name="entryEmail" Placeholder="Adres e-mail" HorizontalTextAlignment="Center" WidthRequest="250" HorizontalOptions="Center"/>
+                <Entry x:Name="entryPassword" Placeholder="Hasło" HorizontalTextAlignment="Center" WidthRequest="250" HorizontalOptions="Center" IsPassword="True"/>
+                <Button x:Name="btnLogin" Text="Zaloguj" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" Margin="0,30,0,30" Clicked="BtnLoginClicked"/>
+                <Button x:Name="btnRegister" Text="Utwórz konto" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" Margin="0,30,0,30" IsVisible="False" Clicked="BtnRegisterClicked"/>
+                <Button x:Name="btnViewRegister" Text="Utwórz konto" BackgroundColor="Transparent" TextColor="#400DD0" Clicked="BtnChangeViewRegister"/>
+                <Button x:Name="btnViewLogin" Text="Zaloguj się" BackgroundColor="Transparent" TextColor="#400DD0" Clicked="BtnChangeViewLogin" IsVisible="False"/>
+            </StackLayout>
+            <StackLayout x:Name="loggedView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsVisible="false">
+                <Image Source="login_user.png" WidthRequest="170" Margin="0,50,0,20" HorizontalOptions="Start"/>
+                <Label x:Name="labelUser" Text="Witaj, {user}!" HorizontalOptions="Start"/>
+                <Button Text="Profil użytkownika" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
+                <Button x:Name="btnAdmin" Text="Panel administratora" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Margin="0,10,0,10" IsVisible="false"/>
+                <Button Text="Wyloguj się" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

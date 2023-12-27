@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobPortal.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace JobPortal
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Tabbed_Page();
         }
 
         protected override void OnStart()
