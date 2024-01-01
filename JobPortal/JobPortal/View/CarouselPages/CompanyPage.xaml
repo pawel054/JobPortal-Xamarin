@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobPortal.View.CarouselPages.CompanyPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="AddCompanyView" HorizontalOptions="Center" IsVisible="False" Margin="0,30,0,30">
+                <Label Text="Dodaj firmę" FontSize="22" HorizontalOptions="Center"/>
+                <Entry x:Name="entryCompanyName" Placeholder="Nazwa" HorizontalTextAlignment="Center" WidthRequest="250" Margin="0,20,0,20"/>
+                <Entry x:Name="entryCompanyAdress" Placeholder="Adres" HorizontalTextAlignment="Center" WidthRequest="250" Margin="0,0,0,20"/>
+                <Entry x:Name="entryCompanyInfo" Placeholder="Opis" HorizontalTextAlignment="Center" WidthRequest="250" Margin="0,0,0,20"/>
+                <Button Text="Dodaj" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" Clicked="BtnAddCompany" WidthRequest="150" HorizontalOptions="Center"/>
+                <Button Text="Zamknij" BackgroundColor="Transparent" BorderColor="#400DD0" BorderWidth="2" TextColor="#400DD0" CornerRadius="20" Clicked="BtnClose" WidthRequest="150" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
+            <StackLayout x:Name="CompanyView">
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="dodajBtn" Grid.Row="0" Text="Dodaj" Background="#400DD0" Margin="0,50,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnCompanyView"/>
+                    <Grid Grid.Row="1" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="ID" Grid.Column="0" FontSize="20" Margin="0,0,20,0"/>
+                        <Label Text="Nazwa" Grid.Column="1" WidthRequest="150" FontSize="20" Margin="0,0,0,0"/>
+                        <Label Text="Adres" Grid.Column="2" WidthRequest="150" FontSize="20" Margin="0,0,0,0"/>
+                    </Grid>
+                    <ScrollView Grid.Row="2">
+                        <CollectionView x:Name="collectionCompany">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.LeftItems>
+                                            <SwipeItem Text="Akcja"/>
+                                        </SwipeView.LeftItems>
+
+                                        <Grid HorizontalOptions="Center" Margin="0,20,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding CompanyID}" Grid.Column="0" FontSize="20" Margin="0,0,30,0"/>
+                                            <Label Text="{Binding Name}" Grid.Column="1" FontSize="20" Margin="0,0,0,0" WidthRequest="150"/>
+                                            <Label Text="{Binding Adress}" Grid.Column="2" FontSize="20" Margin="0,0,0,0" WidthRequest="150"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

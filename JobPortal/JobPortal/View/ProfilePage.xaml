@@ -18,7 +18,7 @@
                 <Image Source="login_user.png" WidthRequest="170" Margin="0,50,0,20" HorizontalOptions="Start"/>
                 <Label x:Name="labelUser" Text="Witaj, {user}!" HorizontalOptions="Start"/>
                 <Button Text="Profil użytkownika" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
-                <Button x:Name="btnAdmin" Text="Panel administratora" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Margin="0,10,0,10" IsVisible="false"/>
+                <Button x:Name="btnAdmin" Text="Panel administratora" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Margin="0,10,0,10" IsVisible="false" Clicked="BtnAdminClicked"/>
                 <Button Text="Wyloguj się" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
             </StackLayout>
         </StackLayout>

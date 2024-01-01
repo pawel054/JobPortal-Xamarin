@@ -43,7 +43,7 @@ namespace JobPortal.View
             List<User> user = new List<User>();
             if (!string.IsNullOrEmpty(entryEmail.Text) && !string.IsNullOrEmpty(entryPassword.Text))
             {
-                user = DatabaseCreator.LogIn(new User(entryEmail.Text, entryEmail.Text));
+                user = DatabaseCreator.LogIn(new User(entryEmail.Text, entryPassword.Text));
 
                 if (user == null)
                 {
@@ -100,6 +100,11 @@ namespace JobPortal.View
                 btnAdmin.IsVisible = true;
             else
                 btnAdmin.IsVisible = false;
+        }
+
+        private void BtnAdminClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AdminPage());
         }
     }
 }

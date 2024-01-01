@@ -11,7 +11,7 @@ namespace JobPortal
         {
             InitializeComponent();
 
-            MainPage = new Tabbed_Page();
+            MainPage = new NavigationPage(new Tabbed_Page());
         }
 
         protected override void OnStart()

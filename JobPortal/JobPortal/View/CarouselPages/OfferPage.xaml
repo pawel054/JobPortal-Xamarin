@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobPortal.View.CarouselPages.OfferPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="OfferView">
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="loginBtn" Grid.Row="0" Text="Dodaj" Background="#400DD0" Margin="0,50,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnAddView"/>
+                    <Grid Grid.Row="1" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="ID" Grid.Column="0" FontSize="20" Margin="0,0,20,0"/>
+                        <Label Text="Firma" Grid.Column="1" FontSize="20" Margin="0,0,20,0"/>
+                        <Label Text="Stanowisko" Grid.Column="2" FontSize="20" Margin="0,0,20,0"/>
+                        <Label Text="Kategoria" Grid.Column="3" FontSize="20" Margin="0,0,0,0"/>
+                    </Grid>
+                    <ScrollView Grid.Row="2">
+                        <CollectionView x:Name="collectionOffer">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.LeftItems>
+                                            <SwipeItem Text="Akcja"/>
+                                        </SwipeView.LeftItems>
+
+                                        <Grid HorizontalOptions="Center">
+                                            <Label Text="{Binding OfferID}" Grid.Column="0" FontSize="20" Margin="0,0,20,0"/>
+                                            <Label Text="{Binding Company.Name}" Grid.Column="1" FontSize="20" Margin="0,0,20,0"/>
+                                            <Label Text="{Binding NazwaStanowiska}" Grid.Column="2" FontSize="20" Margin="0,0,20,0"/>
+                                            <Label Text="{Binding Category.Name}" Grid.Column="3" FontSize="20" Margin="0,0,0,0"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+            <StackLayout x:Name="AddOfferView" HorizontalOptions="Center" IsVisible="False">
+                <Label Text="Dodaj ofertę" FontSize="22" HorizontalOptions="Center"/>
+                <Entry x:Name="entryPosition" Placeholder="Stanowisko" HorizontalTextAlignment="Center" WidthRequest="250"/>
+                <Entry x:Name="entrySalary" Placeholder="Wynagrodzenie" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="entryWorkDays" Placeholder="Dni pracy" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="entryWorkHours" Placeholder="Godziny pracy" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="entryImgSrc" Placeholder="Obrazek (url)" HorizontalTextAlignment="Center"/>
+                <DatePicker x:Name="datePicker" HorizontalOptions="Center"/>
+                <Picker x:Name="pickerPositionLevel" SelectedIndex="0" HorizontalTextAlignment="Center">
+                    <Picker.Items>
+                        <x:String>Wybierz w element</x:String>
+                        <x:String>Praktykant/stażysta</x:String>
+                        <x:String>Asystent</x:String>
+                        <x:String>Młodszy specjalista (junior)</x:String>
+                        <x:String>Specjalista (mid)</x:String>
+                        <x:String>Starszy specjalista (senior)</x:String>
+                        <x:String>Ekspert</x:String>
+                        <x:String>Kierownik/koordynator</x:String>
+                        <x:String>Menedżer</x:String>
+                        <x:String>Dyrektor</x:String>
+                        <x:String>Prezes</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="pickerContract" SelectedIndex="0" HorizontalTextAlignment="Center">
+                    <Picker.Items>
+                        <x:String>Wybierz w element</x:String>
+                        <x:String>Umowa o pracę</x:String>
+                        <x:String>Umowa o dzieło</x:String>
+                        <x:String>Umowa zlecenie</x:String>
+                        <x:String>Umowa B2B</x:String>
+                        <x:String>Umowa na zastępstwo</x:String>
+                        <x:String>Umowa o staż/praktyki</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="pickerEtat" SelectedIndex="0" HorizontalTextAlignment="Center">
+                    <Picker.Items>
+                        <x:String>Wybierz w element</x:String>
+                        <x:String>Część etatu</x:String>
+                        <x:String>Cały etat</x:String>
+                        <x:String>Dodatkowa/tymczasowa</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="pickerWorkType" SelectedIndex="0" HorizontalTextAlignment="Center">
+                    <Picker.Items>
+                        <x:String>Wybierz w element</x:String>
+                        <x:String>Stacjonarnie</x:String>
+                        <x:String>Hybrydowo</x:String>
+                        <x:String>Zdalnie</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="pickerCompany" HorizontalTextAlignment="Center"/>
+                <Picker x:Name="pickerCategory" HorizontalTextAlignment="Center"/>
+                <Button Text="Dodaj" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" Clicked="BtnAddOffer"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

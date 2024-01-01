@@ -91,9 +91,13 @@ namespace JobPortal.Database
                             string password = reader.GetString(2);
                             bool isAdmin = reader.GetBoolean(3);
 
-
-                            User readUser = new User(userID, email, password, isAdmin);
-                            userList.Add(readUser);
+                            if (password == user.Password)
+                            {
+                                User readUser = new User(userID, email, password, isAdmin);
+                                userList.Add(readUser);
+                            }
+                            else
+                                userList = null;
                         }
                         return userList;
                     }
