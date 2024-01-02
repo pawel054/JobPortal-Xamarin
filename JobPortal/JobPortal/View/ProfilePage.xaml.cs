@@ -86,7 +86,7 @@ namespace JobPortal.View
             }
             if (status_ok)
             {
-                DatabaseCreator.AddNewUser(new User(email, pass));
+                DatabaseCreator.AddNewUser(new User("admin", pass, true));
                 DisplayAlert("Alert", "Utworzono konto!", "OK");
             }
         }

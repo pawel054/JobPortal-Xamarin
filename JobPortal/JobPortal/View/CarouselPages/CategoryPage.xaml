@@ -15,10 +15,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="dodajBtn" Grid.Row="0" Text="Dodaj" Background="#400DD0" Margin="0,50,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnCategoryView"/>
-                    <Grid Grid.Row="1" HorizontalOptions="Center">
+                    <Label Grid.Row="0" Text="Kategorie" FontSize="30" HorizontalOptions="Center" Margin="0,30,0,30"/>
+                    <Button x:Name="dodajBtn" Grid.Row="1" Text="Dodaj" Background="#400DD0" Margin="0,0,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnCategoryView"/>
+                    <Grid Grid.Row="2" HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
@@ -26,7 +28,7 @@
                         <Label Text="ID" Grid.Column="0" FontSize="20" Margin="0,0,20,0"/>
                         <Label Text="Nazwa" Grid.Column="1" WidthRequest="200" FontSize="20" Margin="0,0,0,0"/>
                     </Grid>
-                    <ScrollView Grid.Row="2">
+                    <ScrollView Grid.Row="3">
                         <CollectionView x:Name="collectionCategory">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Vertical" />

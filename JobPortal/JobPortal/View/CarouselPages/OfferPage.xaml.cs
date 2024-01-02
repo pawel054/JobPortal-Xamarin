@@ -19,24 +19,34 @@ namespace JobPortal.View.CarouselPages
         public OfferPage()
         {
             InitializeComponent();
+            pickerCategory.ItemsSource = DatabaseAdmin.GetAllCategories();
+            pickerCompany.ItemsSource = DatabaseAdmin.GetAllCompanies();
+            collectionOffer.ItemsSource = DatabaseOffer.GetAllOffers();
         }
 
         private void BtnAddView(object sender, EventArgs e)
         {
-            OfferView.IsVisible = false;
             AddOfferView.IsVisible = true;
+            OfferView.IsVisible = false;
         }
 
         private void BtnAddOffer(object sender, EventArgs e)
         {
-            OfferView.IsVisible = true;
-            AddOfferView.IsVisible = false;
             if (IsValid())
             {
                 var SelectedItemCategory = pickerCategory.SelectedItem as Category;
                 var SelectedItemCompany = pickerCompany.SelectedItem as Company;
                 DatabaseAdmin.InsertOffer(new Offer(SelectedItemCompany, SelectedItemCategory, entryPosition.Text, pickerPositionLevel.SelectedItem.ToString(), pickerContract.SelectedItem.ToString(), pickerWorkType.SelectedItem.ToString(), pickerEtat.SelectedItem.ToString(), entrySalary.Text, entryWorkDays.Text, entryWorkHours.Text, datePicker.Date, entryImgSrc.Text));
+                OfferView.IsVisible = true;
+                AddOfferView.IsVisible = false;
+                collectionOffer.ItemsSource = DatabaseOffer.GetAllOffers();
             }
+        }
+
+        private void BtnClose(object sender, EventArgs e)
+        {
+            AddOfferView.IsVisible = false;
+            OfferView.IsVisible = true;
         }
 
         private bool IsValid()

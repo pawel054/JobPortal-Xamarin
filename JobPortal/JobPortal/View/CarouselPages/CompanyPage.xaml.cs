@@ -42,5 +42,10 @@ namespace JobPortal.View.CarouselPages
             AddCompanyView.IsVisible = false;
             dodajBtn.IsVisible = true;
         }
+
+        private void SwipeDelete(object sender, EventArgs e)
+        {
+
+        }
     }
 }

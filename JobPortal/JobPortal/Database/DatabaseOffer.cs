@@ -60,7 +60,6 @@ namespace JobPortal.Database
         public static List<Offer> GetAllOffers()
         {
             List<Offer> offers = new List<Offer>();
-            string ImageFullPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\Imgs\\Upload"));
 
             using (var db = new SqliteConnection($"Filename={dbpath}"))
             {
@@ -84,7 +83,7 @@ namespace JobPortal.Database
                         string dniPracy = reader.GetString(9);
                         string godzinyPracy = reader.GetString(10);
                         DateTime dataWaznosci = reader.GetDateTime(11);
-                        string img_src = Path.Combine(ImageFullPath, reader.GetString(12));
+                        string img_src = reader.GetString(12);
 
                         string firmaNazwa = reader.GetString(13);
                         string firmaAdres = reader.GetString(14);

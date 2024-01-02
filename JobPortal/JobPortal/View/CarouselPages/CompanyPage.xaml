@@ -17,10 +17,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="dodajBtn" Grid.Row="0" Text="Dodaj" Background="#400DD0" Margin="0,50,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnCompanyView"/>
-                    <Grid Grid.Row="1" HorizontalOptions="Center">
+                    <Label Grid.Row="0" Text="Firmy" FontSize="30" HorizontalOptions="Center" Margin="0,30,0,30"/>
+                    <Button x:Name="dodajBtn" Grid.Row="1" Text="Dodaj" Background="#400DD0" Margin="0,0,0,30" TextColor="White" HorizontalOptions="Center" WidthRequest="200" CornerRadius="20" Clicked="BtnCompanyView"/>
+                    <Grid Grid.Row="2" HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
@@ -30,7 +32,7 @@
                         <Label Text="Nazwa" Grid.Column="1" WidthRequest="150" FontSize="20" Margin="0,0,0,0"/>
                         <Label Text="Adres" Grid.Column="2" WidthRequest="150" FontSize="20" Margin="0,0,0,0"/>
                     </Grid>
-                    <ScrollView Grid.Row="2">
+                    <ScrollView Grid.Row="3">
                         <CollectionView x:Name="collectionCompany">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Vertical" />
@@ -38,9 +40,10 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <SwipeView>
-                                        <SwipeView.LeftItems>
-                                            <SwipeItem Text="Akcja"/>
-                                        </SwipeView.LeftItems>
+                                        <SwipeView.RightItems>
+                                            <SwipeItem IconImageSource="iconEdit.png" BackgroundColor="#400DD0"/>
+                                            <SwipeItem IconImageSource="iconDelete.png" BackgroundColor="#E85555" Invoked="SwipeDelete"/>
+                                        </SwipeView.RightItems>
 
                                         <Grid HorizontalOptions="Center" Margin="0,20,0,0">
                                             <Grid.ColumnDefinitions>

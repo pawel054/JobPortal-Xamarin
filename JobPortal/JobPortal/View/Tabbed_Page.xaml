@@ -6,7 +6,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:Class="JobPortal.View.Tabbed_Page">
     
-    <local:MainPage Title="Home"></local:MainPage>
-    <local:ProfilePage Title="Profile"></local:ProfilePage>
+    <local:MainPage Title="Home" IconImageSource="iconHome.png"></local:MainPage>
+    <local:ProfilePage Title="Profile" IconImageSource="iconPerson.png"></local:ProfilePage>
     
 </TabbedPage>
