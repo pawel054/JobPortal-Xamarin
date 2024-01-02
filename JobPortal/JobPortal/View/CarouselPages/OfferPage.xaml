@@ -56,8 +56,8 @@
                                 <x:String>Zdalnie</x:String>
                             </Picker.Items>
                         </Picker>
-                        <Picker x:Name="pickerCompany" HorizontalTextAlignment="Center" ItemDisplayBinding="{Binding Name}"/>
-                        <Picker x:Name="pickerCategory" HorizontalTextAlignment="Center" ItemDisplayBinding="{Binding Name}"/>
+                        <Picker x:Name="pickerCompany" HorizontalTextAlignment="Center" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="CompanyIndexChange"/>
+                        <Picker x:Name="pickerCategory" HorizontalTextAlignment="Center" ItemDisplayBinding="{Binding Name}" />
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,30,0,0">

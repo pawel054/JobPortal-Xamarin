@@ -18,11 +18,19 @@ namespace JobPortal.View
         {
             InitializeComponent();
             DatabaseCreator.CreateDb();
+            collectionOffer.ItemsSource = DatabaseOffer.GetLatestAddedOffers();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            collectionOffer.ItemsSource = DatabaseOffer.GetLatestAddedOffers();
         }
 
-        private void testclick(object sender, EventArgs e)
+        private void OfferClicked(object sender, EventArgs e)
         {
-           
+            var button = (Button)sender;
+            int offerID = (int)button.CommandParameter;
+            Navigation.PushAsync(new OfferDetailsPage(offerID));
         }
     }
 }

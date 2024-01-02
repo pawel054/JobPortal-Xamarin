@@ -7,17 +7,36 @@
             <StackLayout>
                 <Entry x:Name="searchEntry" Placeholder="Wyszukaj po stanoiwsku" HorizontalTextAlignment="Center"/>
             </StackLayout>
-            <Label Text="Najnowsze oferty" HorizontalOptions="Center" FontSize="25" Margin="0,30,0,0"/>
-            <Button Text="123" Clicked="testclick"/>
-            <CollectionView x:Name="testcol">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
+            <Label Text="Najnowsze oferty" HorizontalOptions="Center" FontSize="25" Margin="0,30,0,30"/>
+            <CollectionView x:Name="collectionOffer">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding ItemName}" />
-                            <Label Text="{Binding ItemDescription}" />
+                        <StackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                            <Frame CornerRadius="20" BackgroundColor="#E8EBED" HeightRequest="160" WidthRequest="280" HorizontalOptions="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Clicked="OfferClicked" CommandParameter="{Binding OfferID}"/>
+                                    <Label Text="{Binding NazwaStanowiska}" Grid.Column="0" FontSize="18" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Center" Margin="15,0,0,0"/>
+                                    <Label Text="{Binding Company.Name}" Grid.Column="0" Grid.Row="1" VerticalOptions="Center" Margin="15,0,0,0"/>
+                                    <Image Source="{Binding SciezkaObraz}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"/>
+                                    <StackLayout Grid.Column="0" Grid.Row="2" Margin="15,20,0,0" VerticalOptions="Center" Orientation="Horizontal">
+                                        <Image Source="iconEdit.png" VerticalOptions="Center" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding Company.Adress}" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" Grid.Row="2" Margin="15,20,0,0" VerticalOptions="Center" Orientation="Horizontal">
+                                        <Image Source="iconEdit.png" VerticalOptions="Center" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding Wynagrodzenie}" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

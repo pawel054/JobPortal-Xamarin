@@ -47,7 +47,7 @@ namespace JobPortal.View
 
                 if (user == null)
                 {
-                    DisplayAlert("1", "1", "1");
+                    DisplayAlert("Alert", "Niepoprawny email lub hasło!", "OK");
                 }
                 else
                     UserLoggedIn(user.FirstOrDefault());
@@ -86,7 +86,7 @@ namespace JobPortal.View
             }
             if (status_ok)
             {
-                DatabaseCreator.AddNewUser(new User("admin", pass, true));
+                DatabaseCreator.AddNewUser(new User("a", pass, true));
                 DisplayAlert("Alert", "Utworzono konto!", "OK");
             }
         }

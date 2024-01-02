@@ -16,11 +16,11 @@ namespace JobPortal.View.CarouselPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OfferPage : ContentPage
     {
+        Company selectedCompany;
         public OfferPage()
         {
             InitializeComponent();
             pickerCategory.ItemsSource = DatabaseAdmin.GetAllCategories();
-            pickerCompany.ItemsSource = DatabaseAdmin.GetAllCompanies();
             collectionOffer.ItemsSource = DatabaseOffer.GetAllOffers();
         }
 
@@ -28,6 +28,8 @@ namespace JobPortal.View.CarouselPages
         {
             AddOfferView.IsVisible = true;
             OfferView.IsVisible = false;
+            pickerCategory.ItemsSource = DatabaseAdmin.GetAllCategories();
+            pickerCompany.ItemsSource = DatabaseAdmin.GetAllCompanies();
         }
 
         private void BtnAddOffer(object sender, EventArgs e)
@@ -63,6 +65,13 @@ namespace JobPortal.View.CarouselPages
                 if (!Regex.IsMatch(entryWorkHours.Text, @"^\d{1,2}:\d{2}(?:\s*-\s*\d{1,2}:\d{2})?$")) { isOk = false; DisplayAlert("Alert", "Niepoprawna wartość dla pola godziny pracy!", "OK"); }
             }
             return isOk;
+        }
+
+        private void CompanyIndexChange(object sender, EventArgs e)
+        {
+            var testt = pickerCompany.SelectedItem as Company;
+            DisplayAlert("alert", testt.Name, "ok");
+            selectedCompany = testt;
         }
     }
 }

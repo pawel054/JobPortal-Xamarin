@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobPortal.View.OfferDetailsPage"
+             Title="Ogłoszenie">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#E8EBED" CornerRadius="20" HeightRequest="80" Margin="20,20,20,0">
+                <Grid VerticalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="iconEdit.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Start" WidthRequest="50" Margin="0,0,10,0"/>
+                    <Label Text="test" Grid.Column="1" Grid.Row="0" FontSize="20" HorizontalOptions="Start"/>
+                    <Label Text="test" Grid.Column="1" Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    <Button Text="Aplikuj" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#400DD0" TextColor="White" CornerRadius="15" WidthRequest="90"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
