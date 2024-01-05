@@ -104,7 +104,6 @@ namespace JobPortal.Database
         public static List<Offer> GetOfferByID(int id)
         {
             List<Offer> offer = new List<Offer>();
-            string ImageFullPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\Imgs\\Upload"));
 
             using (var db = new SqliteConnection($"Filename={dbpath}"))
             {
@@ -129,7 +128,7 @@ namespace JobPortal.Database
                         string dniPracy = reader.GetString(9);
                         string godzinyPracy = reader.GetString(10);
                         DateTime dataWaznosci = reader.GetDateTime(11);
-                        string img_src = Path.Combine(ImageFullPath, reader.GetString(12));
+                        string img_src = reader.GetString(12);
 
                         string firmaNazwa = reader.GetString(13);
                         string firmaAdres = reader.GetString(14);
@@ -313,8 +312,8 @@ namespace JobPortal.Database
                 var insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
                 insertCommand.CommandText = "INSERT INTO uzytkownik_aplikacje VALUES(NULL, @UserID, @OfferID, @Status);";
-                insertCommand.Parameters.AddWithValue("@UserID", application.user.UserID);
-                insertCommand.Parameters.AddWithValue("@OfferID", application.offer.OfferID);
+                insertCommand.Parameters.AddWithValue("@UserID", application.userID);
+                insertCommand.Parameters.AddWithValue("@OfferID", application.offerID);
                 insertCommand.Parameters.AddWithValue("@Status", application.Status);
                 insertCommand.ExecuteReader();
             }
@@ -348,10 +347,7 @@ namespace JobPortal.Database
                         int categoryID = reader.GetInt32(8);
                         string positionName = reader.GetString(9);
 
-                        User user = new User(email, passoword, isAdmin);
-                        Offer offer = new Offer(new Company(DatabaseAdmin.GetCompanyName(companyID)), positionName);
-
-                        UserApplication userApplication = new UserApplication(user, offer, status);
+                        UserApplication userApplication = new UserApplication(appliactionId, userId, offerID, status, positionName);
                         applications.Add(userApplication);
                     }
                     return applications;
@@ -366,7 +362,7 @@ namespace JobPortal.Database
                 db.Open();
                 var insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
-                insertCommand.CommandText = "DELETE FROM uzytkownik_aplikacje WHERE user_id=@ID";
+                insertCommand.CommandText = "DELETE FROM uzytkownik_aplikacje WHERE aplikacja_id=@ID";
                 insertCommand.Parameters.AddWithValue("@ID", id);
                 insertCommand.ExecuteReader();
             }

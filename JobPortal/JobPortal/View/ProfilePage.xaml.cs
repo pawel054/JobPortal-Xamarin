@@ -9,15 +9,25 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
+using JobPortal.View.Admin;
+using System.Collections.ObjectModel;
 
 namespace JobPortal.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        public ObservableCollection<CarouselClass> CarouselItems { get; set; }
         public ProfilePage()
         {
             InitializeComponent();
+            CarouselItems = new ObservableCollection<CarouselClass>
+        {
+            new CarouselClass { value = DatabaseAdmin.GetCountOfRecords("oferta")},
+            new CarouselClass { value = DatabaseAdmin.GetCountOfRecords("firma")},
+        };
+
+            BindingContext = this;
         }
 
         private void BtnChangeViewRegister(object sender, EventArgs e)
@@ -50,7 +60,10 @@ namespace JobPortal.View
                     DisplayAlert("Alert", "Niepoprawny email lub hasło!", "OK");
                 }
                 else
+                {
+                    App.LoggedInUserId = user.FirstOrDefault().UserID;
                     UserLoggedIn(user.FirstOrDefault());
+                }
             }
             else
             {
@@ -86,7 +99,7 @@ namespace JobPortal.View
             }
             if (status_ok)
             {
-                DatabaseCreator.AddNewUser(new User("a", pass, true));
+                DatabaseCreator.AddNewUser(new User(email, pass, false));
                 DisplayAlert("Alert", "Utworzono konto!", "OK");
             }
         }
@@ -104,7 +117,59 @@ namespace JobPortal.View
 
         private void BtnAdminClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AdminPage());
+            loggedView.IsVisible=false;
+            adminPanelView.IsVisible=true;
+        }
+
+        private void BtnGoBack(object sender, EventArgs e)
+        {
+            loggedView.IsVisible = true;
+            adminPanelView.IsVisible = false;
+        }
+
+        private void BtnGoBack2(object sender, EventArgs e)
+        {
+            loggedView.IsVisible = true;
+            applicationsView.IsVisible = false;
+        }
+
+        private void BtnOfferClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OfferPage());
+        }
+
+        private void BtnCategoryClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CategoryPage());
+        }
+
+        private void BtnCompanyClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CompanyPage());
+        }
+
+        private void BtnApplications(object sender, EventArgs e)
+        {
+            loggedView.IsVisible = false;
+            applicationsView.IsVisible = true;
+            collectionApplications.ItemsSource = DatabaseOffer.GetApplicationByID(App.LoggedInUserId);
+        }
+
+        private void BtnDeleteApplication(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            int applicationID = (int)button.CommandParameter;
+            DatabaseOffer.DeleteApplication(applicationID);
+            collectionApplications.ItemsSource = DatabaseOffer.GetApplicationByID(App.LoggedInUserId);
+        }
+
+        private void BtnLogOut(object sender, EventArgs e)
+        {
+            App.LoggedInUserId = 0;
+            loggedView.IsVisible = false;
+            loginView.IsVisible = true;
+            entryEmail.Text = string.Empty;
+            entryPassword.Text = string.Empty;
         }
     }
 }

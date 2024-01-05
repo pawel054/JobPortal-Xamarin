@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JobPortal.View.MainPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Entry x:Name="searchEntry" Placeholder="Wyszukaj po stanoiwsku" HorizontalTextAlignment="Center"/>
-            </StackLayout>
+        <StackLayout BackgroundColor="#F1F5FB">
+            <Frame BackgroundColor="White" CornerRadius="20" Margin="20,20,20,0">
+                <StackLayout>
+                    <SearchBar Placeholder="Wyszukaj..." TextChanged="OnSearchBarTextChanged"/>
+                </StackLayout>
+            </Frame>
             <Label Text="Najnowsze oferty" HorizontalOptions="Center" FontSize="25" Margin="0,30,0,30"/>
             <CollectionView x:Name="collectionOffer">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                            <Frame CornerRadius="20" BackgroundColor="#E8EBED" HeightRequest="160" WidthRequest="280" HorizontalOptions="Center">
+                            <Frame CornerRadius="20" BackgroundColor="White" HeightRequest="160" WidthRequest="280" HorizontalOptions="Center">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -23,18 +25,18 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Button BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Clicked="OfferClicked" CommandParameter="{Binding OfferID}"/>
                                     <Label Text="{Binding NazwaStanowiska}" Grid.Column="0" FontSize="18" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Center" Margin="15,0,0,0"/>
                                     <Label Text="{Binding Company.Name}" Grid.Column="0" Grid.Row="1" VerticalOptions="Center" Margin="15,0,0,0"/>
                                     <Image Source="{Binding SciezkaObraz}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"/>
                                     <StackLayout Grid.Column="0" Grid.Row="2" Margin="15,20,0,0" VerticalOptions="Center" Orientation="Horizontal">
-                                        <Image Source="iconEdit.png" VerticalOptions="Center" Margin="0,0,10,0"/>
+                                        <Image Source="offer_icon8.png" WidthRequest="18" VerticalOptions="Center" Margin="0,0,10,0"/>
                                         <Label Text="{Binding Company.Adress}" VerticalOptions="Center"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1" Grid.Row="2" Margin="15,20,0,0" VerticalOptions="Center" Orientation="Horizontal">
-                                        <Image Source="iconEdit.png" VerticalOptions="Center" Margin="0,0,10,0"/>
+                                        <Image Source="offer_icon6.png" WidthRequest="25" VerticalOptions="Center" Margin="0,0,10,0"/>
                                         <Label Text="{Binding Wynagrodzenie}" VerticalOptions="Center"/>
                                     </StackLayout>
+                                    <Button BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Clicked="OfferClicked" CommandParameter="{Binding OfferID}"/>
                                 </Grid>
                             </Frame>
                         </StackLayout>

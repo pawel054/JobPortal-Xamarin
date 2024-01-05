@@ -5,7 +5,9 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:Class="JobPortal.View.Tabbed_Page"
-            NavigationPage.HasNavigationBar="False">
+            NavigationPage.HasNavigationBar="False"
+            SelectedTabColor="#400DD0"
+            UnselectedTabColor="DarkGray">
     
     <local:MainPage Title="Home" IconImageSource="iconHome.png"></local:MainPage>
     <local:ProfilePage Title="Profile" IconImageSource="iconPerson.png"></local:ProfilePage>

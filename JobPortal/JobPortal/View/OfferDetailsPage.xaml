@@ -4,24 +4,91 @@
              x:Class="JobPortal.View.OfferDetailsPage"
              Title="Ogłoszenie">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="#E8EBED" CornerRadius="20" HeightRequest="80" Margin="20,20,20,0">
-                <Grid VerticalOptions="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="iconEdit.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Start" WidthRequest="50" Margin="0,0,10,0"/>
-                    <Label Text="test" Grid.Column="1" Grid.Row="0" FontSize="20" HorizontalOptions="Start"/>
-                    <Label Text="test" Grid.Column="1" Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Start"/>
-                    <Button Text="Aplikuj" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#400DD0" TextColor="White" CornerRadius="15" WidthRequest="90"/>
-                </Grid>
-            </Frame>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BackgroundColor="#F1F5FB">
+                <Frame BackgroundColor="White" CornerRadius="20" HeightRequest="80" Margin="20,20,20,0">
+                    <Grid VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image x:Name="imgOffer" Source="iconEdit.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Start" WidthRequest="90" Margin="0,0,10,0"/>
+                        <Label x:Name="txtPosition" Text="Stanowisko" Grid.Column="1" Grid.Row="0" FontSize="20" HorizontalOptions="Start"/>
+                        <Label x:Name="txtCompany" Text="firma" Grid.Column="1" Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="20"  Margin="20,20,20,0">
+                    <StackLayout>
+                        <Label Text="Szczegóły oferty" HorizontalOptions="Center" FontSize="22"/>
+                        <Frame BackgroundColor="#E6E0F9"  CornerRadius="15" HasShadow="False" Margin="20,20,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="offer_icon6.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HeightRequest="35" WidthRequest="35"/>
+                                <Label x:Name="txtSalary" Grid.Column="1" Grid.Row="0" Text="4000 - 8000 zł" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                <Label Grid.Column="1" Grid.Row="2" Text="brutto / miesięcznie" FontSize="11" VerticalOptions="Center" Margin="10,-10,0,0"/>
+                            </Grid>
+                        </Frame>
+                        <StackLayout HorizontalOptions="Start" Margin="20,20,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon7.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtExpiration" Text="Wygasa: 21.01.2024" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Start" Margin="20,60,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon1.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtPositionLvl" Text="Poziom stanowiska" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Start" Margin="20,20,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon2.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtContract" Text="Umowa o pracę" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Start" Margin="20,20,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon3.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtEtat" Text="Pełny etat" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Start" Margin="20,20,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon4.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtWorkType" Text="Stacjonarnie" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Start" Margin="20,20,0,0" Orientation="Horizontal">
+                            <Frame BackgroundColor="#E6E0F9" Padding="12" CornerRadius="15" HasShadow="False">
+                                <Image Source="offer_icon5.png" HeightRequest="35" WidthRequest="35" />
+                            </Frame>
+                            <Label x:Name="txtWorkDays" Text="Dni robocze" FontSize="17" VerticalOptions="Center" Margin="10,0,0,0"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="20"  Margin="20,20,20,0">
+                    <StackLayout>
+                        <Label Text="Informacja o firmie" HorizontalOptions="Center" FontSize="22"/>
+                        <Label x:Name="txtInfo" Text="test" HorizontalOptions="Center" Margin="20,0,20,0"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="20"  Margin="20,30,20,30">
+                    <Button Text="Aplikuj" HorizontalOptions="Center" BackgroundColor="#400DD0" TextColor="White" CornerRadius="15" WidthRequest="250" Clicked="BtnApplication"/>
+                </Frame>
+                
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

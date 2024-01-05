@@ -24,16 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View\AdminPage.xaml">
+    <EmbeddedResource Update="View\Admin\AdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\CarouselPages\CategoryPage.xaml">
+    <EmbeddedResource Update="View\Admin\CategoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\CarouselPages\CompanyPage.xaml">
+    <EmbeddedResource Update="View\Admin\CompanyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\CarouselPages\OfferPage.xaml">
+    <EmbeddedResource Update="View\Admin\OfferPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\MainPage.xaml">

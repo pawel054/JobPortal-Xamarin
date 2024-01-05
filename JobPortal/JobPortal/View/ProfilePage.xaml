@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JobPortal.View.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#F1F5FB">
             <StackLayout x:Name="loginView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                 <Label x:Name="labelTitle" Text="Zaloguj się" FontSize="40" TextColor="Black" HorizontalOptions="Center"/>
                 <Image Source="login_user.png" WidthRequest="170" Margin="0,50,0,20"/>
@@ -15,11 +15,38 @@
                 <Button x:Name="btnViewLogin" Text="Zaloguj się" BackgroundColor="Transparent" TextColor="#400DD0" Clicked="BtnChangeViewLogin" IsVisible="False"/>
             </StackLayout>
             <StackLayout x:Name="loggedView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsVisible="false">
-                <Image Source="login_user.png" WidthRequest="170" Margin="0,50,0,20" HorizontalOptions="Start"/>
-                <Label x:Name="labelUser" Text="Witaj, {user}!" HorizontalOptions="Start"/>
-                <Button Text="Profil użytkownika" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
+                <Image Source="login_user.png" WidthRequest="150" Margin="0,50,0,20" HorizontalOptions="Start"/>
+                <Label x:Name="labelUser" FontSize="20" Text="Witaj, {user}!" HorizontalOptions="Start"/>
+                <Button Text="Moje aplikacje" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Clicked="BtnApplications" Margin="0,40,0,0"/>
                 <Button x:Name="btnAdmin" Text="Panel administratora" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Margin="0,10,0,10" IsVisible="false" Clicked="BtnAdminClicked"/>
-                <Button Text="Wyloguj się" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300"/>
+                <Button Text="Wyloguj się" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="300" Clicked="BtnLogOut"/>
+            </StackLayout>
+            <StackLayout x:Name="adminPanelView" IsVisible="false">
+                <Button Text="Cofnij" HorizontalOptions="Start" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="100" BorderColor="#400DD0" BorderWidth="2" TextColor="#400DD0" CornerRadius="20" Margin="20,20,0,0" Clicked="BtnGoBack"/>
+                <Label Text="Panel administratora" HorizontalOptions="Center" FontSize="28" Margin="0,30,0,0"/>
+                <Label Text="Zarządaj danymi" FontSize="27" HorizontalOptions="Center" Margin="0,100,0,20"/>
+                <StackLayout HorizontalOptions="Center">
+                    <Button Text="Ogłoszenia" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="250" Clicked="BtnOfferClicked"/>
+                    <Button Text="Kategorie" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="250" Margin="0,10,0,10" Clicked="BtnCategoryClicked"/>
+                    <Button Text="Firmy" BackgroundColor="#400DD0" TextColor="White" CornerRadius="20" WidthRequest="250" Clicked="BtnCompanyClicked"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="applicationsView" IsVisible="false">
+                <Button Text="Cofnij" HorizontalOptions="Start" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="100" BorderColor="#400DD0" BorderWidth="2" TextColor="#400DD0" CornerRadius="20" Margin="20,20,0,0" Clicked="BtnGoBack2"/>
+                <Label Text="Moje aplikacje" FontSize="25" HorizontalOptions="Center" Margin="0,30,0,30"/>
+                <CollectionView x:Name="collectionApplications"  Margin="20,0,20,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding PositionName}" VerticalOptions="Center" Margin="20,0,40,0"/>
+                                    <Label Text="{Binding Status}" VerticalOptions="Center"/>
+                                    <Button Text="Usuń" BackgroundColor="red" TextColor="white" CornerRadius="20" VerticalOptions="Center" Margin="20,0,0,0" CommandParameter="{Binding ID}" Clicked="BtnDeleteApplication"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

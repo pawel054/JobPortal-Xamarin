@@ -7,23 +7,33 @@ namespace JobPortal.Class
     public class UserApplication
     {
         public int ID { get; set; }
-        public User user { get; set; }
-        public Offer offer { get; set; }
+        public int userID { get; set; }
+        public int offerID { get; set; }
         public string Status { get; set; }
+        public string PositionName { get; set; }
 
-        public UserApplication(int iD, User user, Offer offer, string status)
+        public UserApplication(int iD, int userID, int offerID, string status)
         {
             ID = iD;
-            this.user = user;
-            this.offer = offer;
+            this.userID = userID;
+            this.offerID = offerID;
             Status = status;
         }
 
-        public UserApplication(User user, Offer offer, string status)
+        public UserApplication(int userID, int offerID, string status)
         {
-            this.user = user;
-            this.offer = offer;
+            this.userID = userID;
+            this.offerID = offerID;
             Status = status;
+        }
+
+        public UserApplication(int iD, int userID, int offerID, string status, string PositionName)
+        {
+            ID = iD;
+            this.userID = userID;
+            this.offerID = offerID;
+            Status = status;
+            this.PositionName = PositionName;
         }
     }
 }

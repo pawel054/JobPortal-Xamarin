@@ -7,6 +7,7 @@ namespace JobPortal
 {
     public partial class App : Application
     {
+        public static int LoggedInUserId { get; set; }
         public App()
         {
             InitializeComponent();

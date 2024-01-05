@@ -32,5 +32,17 @@ namespace JobPortal.View
             int offerID = (int)button.CommandParameter;
             Navigation.PushAsync(new OfferDetailsPage(offerID));
         }
+
+        private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = e.NewTextValue.ToLower(); // Konwertuj tekst na małe litery
+
+            var searchResult = DatabaseOffer.GetAllOffers().Where(item =>
+                item.NazwaStanowiska.ToLower().StartsWith(searchText) ||
+                item.Company.Name.ToLower().StartsWith(searchText) ||
+                item.Company.Adress.ToLower().StartsWith(searchText)
+            );
+            collectionOffer.ItemsSource = searchResult;
+        }
     }
 }
